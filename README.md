@@ -5,7 +5,7 @@
 <p align="center">
   <b>©RenderHeads 2020</b>
 </p>
-<p align ="center"> Author / Maintainer: Ross borchers </p>
+<p align ="center"> Author / Maintainer: Ross Borchers </p>
 
 
 # Lightweight module pattern for unity.

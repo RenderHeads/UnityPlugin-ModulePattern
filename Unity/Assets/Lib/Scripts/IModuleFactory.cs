@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 namespace RenderHeads.Tooling.Core.ModulePattern
 {
     /// <summary>
@@ -32,13 +31,6 @@ namespace RenderHeads.Tooling.Core.ModulePattern
 		/// <returns></returns>
 		T CreateModule<T>() where T : IModule, new();
 
-		/// <summary>
-		/// A factory method which creates Module of type T, and adds it to the factory.
-		/// </summary>
-		/// <param name="args"></param>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		[System.Obsolete("[IModuleFactory] Use AddModule instead, it now returns the added module, nullifying the advantage of this function, while maintaining type safety.")]
-		T CreateModule<T>(object[] args = null) where T : IModule;
+	
 	}
 }

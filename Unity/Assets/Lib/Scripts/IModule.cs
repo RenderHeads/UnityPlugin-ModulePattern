@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RenderHeads.Tools.ModulePattern
+namespace RenderHeads.Tooling.Core.ModulePattern
 {
     /// <summary>
     /// Base interface for all modules, IModuleFactory requires modules inherit from this.

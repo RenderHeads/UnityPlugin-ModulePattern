@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace RenderHeads.Tools.ModulePattern
+namespace RenderHeads.Tooling.Core.ModulePattern
 {
     /// <summary>
     /// Default implementation of IModule factory that provides some convenience methods for finding modules in a scene / other scenes.

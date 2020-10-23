@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace RenderHeads.Tools.ModulePattern
+namespace RenderHeads.Tooling.Core.ModulePattern
 {
     /// <summary>
     /// Interface for a module factory. These are responsible for storing and potentially updating modules in a scene. You may want to create your own version to encapsulate module related behaviour but for the most part its ok to use <see cref="DefaultModuleFactory"/>.

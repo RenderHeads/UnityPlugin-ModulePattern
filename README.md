@@ -15,7 +15,7 @@
 - _**Uncertainty**_ surrounding which components depend on one another.
 - _**Disbelief**_ staring at a mess of duplicated game objects after project hand-over.
 - _**Dread**_ while searching for a component in the hierarchy editor window.
-- _**Trepidation**_ related to moving a component to a different game object.
+- _**Trepidation**_ related to moving a component to a different GameObject.
 - _**Concern**_ over linking components together in the hierarchy and whether they will randomly become unlinked.
 - _**Anxiety**_ while debugging, caused by forgetting to assign a reference.
 - _**Unease**_ building the transform hierarchy for systems that have no reason to be represented spacially.

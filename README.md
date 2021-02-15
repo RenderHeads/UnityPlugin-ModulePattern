@@ -10,14 +10,105 @@
 
 # Lightweight module pattern for unity.
 
-todo: Write Readme file.
+**Have you experienced one or more of the following symptoms?**
 
+- _**Uncertainty**_ surrounding which components depend on one another.
+- _**Disbelief**_ staring at a mess of duplicated game objects after project handed over.
+- _**Dread**_ while searching for a component in the hierarchy editor window.
+- _**Trepidation**_ related to moving a component to a different game object.
+- _**Concern**_ over linking components together in the hierarchy and whether they will randomly become unlinked.
+- _**Anxiety**_ while debugging, caused by forgetting to assign a reference.
+- _**Unease**_ building the transform hierarchy for systems that have no reason to be represented spacially.
+- _**Confusion**_ when disabled GameObjects erroneously disable an important component.
+
+![It's going to be ok.](https://media.giphy.com/media/3ohs81rDuEz9ioJzAA/giphy-downsized.gif)
+
+Fear not - **we have the solution for you!**
+
+The module pattern is a framework for **building gameplay systems decoupled from the transform hierarchy.**
+The framework provides a very light set of tools to create acyclical, decoupled caller hierarchies in code, and allows you to access them from MonoBehaviour-land.
+[We mean module in a classical sense!](https://en.wikipedia.org/wiki/Modular_programming) A decoupled, cohesive and replaceable piece of functionality; Hidden behind an interface. In this case, modules are plain C# classes that inherit from an interface and have factories to access them program-wide.
+
+## Features
+- Build your module hierarchy in code.
+- Access modules anywhere in code, globally and on a per scene basis, without overusing singletons.
+- Create modules as plain C# classes which open up the possibility for new design patterns:
+   - Adhere to [RAII](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization) principles.
+   - Use [Inversion of Control](https://en.wikipedia.org/wiki/Inversion_of_control) and DI
+   - Manual control of module update order.
+
+### The Module Pattern is not
+
+- It is **not** replacement or in competition with DOTS, Jobs, or Burst. You can use them together.
+- It is **not** replacement or in competition with MonoBehaviours, MonoBehaviours are still useful for view related logic.
+
+# Usage
+The pattern is based on two interfaces
+- [IModule](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/IModule.cs) 
+    - Interface for any module you want to create (A C# class that extends IModule), IModuleFactory requires modules inherit from this.
+- [IModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/IModuleFactory.cs)
+    - Interface responsible for storing modules. This is used to get Modules in your game, whether it be in MonoBehaviours, Systems, etc.
+
+[DefaultModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/DefaultModuleFactory.cs) is an implementation of [IModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/IModuleFactory.cs).
+
+- It provides a standard way to get modules across your game and should be appropriate for 90% of use cases.
+
+Note that we use interfaces wherever possible as a matter of principle to maintain decoupling, this abstraction is enforced in DefaultModuleFactory, but it is not necessarily required in general.
+
+### Example
+You can use a  MonoBehaviour to bootstrap the module system. There are other ways to bootstrap the module system. You just need a way to create and update the module factory and modules. Using a GameManager/LevelManager's Awake/Start and Update functions suffice most of the time.
+ 
+- Making a module factory for each scene you want to have a dedicated group of modules
+```
+//We specify the scene this factory is created in so we can search for modules by scene.
+IModuleFactory moduleFactory = new DefaultModuleFactory(gameObject.scene);
+```
+
+- Initializing modules and dependencies. Adding them to the module factory
+```
+IMyModule1 module1 = moduleFactory.AddModule(new MyModule1());
+IMyModule2 module2 = moduleFactory.AddModule(new MyModule2(module1)); //Module2 depends on module 1.
+```
+
+- After initialization. Accessing modules from a MonoBehaviour
+```
+//Get factory by scene
+if(DefaultModuleFactory.TryFindFactoryInScene(this.gameObject.scene, out IModuleFactory factory))
+{
+   //Get module from factory
+   if(factory.TryGetModule(out IModule1 module1))
+   {
+      module1.FooBar();
+   }
+}
+
+//Get the first module of type in all factories across all scenes.
+if(DefaultModuleFactory.TryFindFirstInAll(out IModule1 module1))
+{
+   module1.FooBar();
+}
+
+//Get all modules of type in all factories across all scenes.
+List<IModule1> modules = DefaultModuleFactory.FindInAll<IModule1>();
+
+//Get all module factories for all scenes
+List<IModuleFactory> factories = DefaultModuleFactory.GetAll();
+
+```
+
+# Rationale
+
+Inter-class communication traditionally is achieved by a [singleton](https://en.wikipedia.org/wiki/Singleton_pattern), [FindObjectOfType](https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html) or [GetComponent](https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html), [GetComponentInChildren](https://docs.unity3d.com/ScriptReference/Component.GetComponentsInChildren.html), [GetComponentInParent](https://docs.unity3d.com/ScriptReference/GameObject.GetComponentInParent.html) and related functions.
+
+All of these assume some relationship between the transform hierarchy and the code structure. This is not always the case. Systems often contain logic but do not handle rendering and have no reason to be spacial (they are not view components!). There is often little relationship between transform hierarchy order and the caller hierarchy.
+
+Script update is often controlled by Monobehaviour Start/Update/FixedUpdate/LateUpdate callbacks. This requires that scripts inherit from MonoBehaviour, which couples script update to the transform hierarchy. There is no reason this needs to be the case. Furthermore, MonoBehaviour update order is notoriously hard to control and understand and can often lead to one-frame-late type bugs. See [10000 Update() calls](https://blogs.unity3d.com/2015/12/23/1k-update-calls/) for a related discussion.
+
+Based on these observations we chose to separate the caller hierarchy from the scene tree hierarchy. In our projects, it has helped us decouple, standardize and re-use code and helped developers jump between projects faster than they otherwise would have.
 
 # Usage and Contribution
 ## Usage License
 The project is licensed under a GPL-3.0 license, which means you can use it for commerical and non commercial use, but the project you use it in also needs to apply the GPL-3.0 license and be open-sourced. If this license is not suitable for you, please contact us at southafrica@renderheads.com and we can discuss an appropriate commercial license.
 
 ## Contributors License
-We are currently working on a Contributors License Agreement, which we will put up here when its ready. In the mean time if you would like to contribute, please reach out to us.
-
-
+We are currently working on a Contributors License Agreement, which we will put up here when it's ready. In the meantime, if you would like to contribute, please reach out to us.

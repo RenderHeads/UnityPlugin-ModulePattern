@@ -97,13 +97,13 @@ List<IModuleFactory> factories = DefaultModuleFactory.GetAll();
 
 # Rationale
 
-Inter-class communication traditionally is achieved by a [singleton](https://en.wikipedia.org/wiki/Singleton_pattern), [FindObjectOfType](https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html) or [GetComponent](https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html), [GetComponentInChildren](https://docs.unity3d.com/ScriptReference/Component.GetComponentsInChildren.html), [GetComponentInParent](https://docs.unity3d.com/ScriptReference/GameObject.GetComponentInParent.html) and related functions.
+Inter-class communication traditionally is achieved by a [singleton](https://en.wikipedia.org/wiki/Singleton_pattern), [FindObjectOfType](https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html) or [GetComponent](https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html), [GetComponentInChildren](https://docs.unity3d.com/ScriptReference/Component.GetComponentsInChildren.html), [GetComponentInParent](https://docs.unity3d.com/ScriptReference/GameObject.GetComponentInParent.html) and related functions. Sometimes you may assign a reference in a public inspector field.
 
-All of these assume some relationship between the transform hierarchy and the code structure. This is not always the case. Systems can contain logic but do not handle rendering and have no reason to be spacial (they are not view components!). There may be little relationship between transform hierarchy order and the caller hierarchy.
+All of these assume some relationship between the transform hierarchy and the code structure. This is not always the case. Systems can contain logic but do not handle rendering and have no reason to be spacial (they are not view components!). The relationship does not need to be serialized in the scene or prefab. There may be little relationship between transform hierarchy order and the caller hierarchy. Its convoluted.
 
 Script update is typically controlled by Monobehaviour Start/Update/FixedUpdate/LateUpdate callbacks. This requires that scripts inherit from MonoBehaviour, which couples script update to the transform hierarchy. There is no reason this needs to be the case. Furthermore, MonoBehaviour update order is notoriously hard to control and understand and can lead to one-frame-late type bugs. [Not to mention the performance implications!](https://blogs.unity3d.com/2015/12/23/1k-update-calls/)
 
-Based on these observations we chose to separate the caller hierarchy from the scene tree hierarchy. In our projects, it has helped us decouple, standardize and re-use code and helped developers jump between projects faster than they otherwise would have.
+Based on these observations we chose to separate the caller hierarchy for non view systems from the scene tree hierarchy. In our projects, it has helped us decouple, standardize and re-use code and helped developers jump between projects faster than they otherwise would have been able to.
 
 # Usage and Contribution
 ## Usage License

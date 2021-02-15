@@ -28,7 +28,7 @@
 The module pattern is a framework for **building gameplay systems decoupled from the transform hierarchy.**
 The framework provides a very light set of tools to create acyclical, decoupled caller hierarchies in code, and **allows you to access them from MonoBehaviour-land.**
 
-[We mean module in a classical sense!](https://en.wikipedia.org/wiki/Modular_programming) A decoupled, cohesive and replaceable piece of functionality; Hidden behind an interface. In this case, modules are plain C# classes that inherit from an interface and have factories to access them program-wide.
+[We mean module in a classical sense!](https://en.wikipedia.org/wiki/Modular_programming) A decoupled, cohesive and replaceable piece of functionality; Hidden behind an interface. In this case, modules are plain C# classes that inherit from an interface and have factories to access them program-wide. But you could put anything behind that interface.
 
 ## Features
 - Build your module hierarchy in code.

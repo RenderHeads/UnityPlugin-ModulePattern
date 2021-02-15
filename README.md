@@ -44,7 +44,7 @@ The framework provides a very light set of tools to create acyclical, decoupled 
 - It is **not** replacement or in competition with MonoBehaviours, MonoBehaviours are still useful for view related logic.
 
 # Usage
-This is a lot of chitter chatter! In reality there are only three classes you need to know about:
+There are only three useful files in this repository:
 - [IModule](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/IModule.cs) 
     - Interface for any module you want to create (A C# class that extends IModule), IModuleFactory requires modules inherit from this.
 - [IModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/IModuleFactory.cs)
@@ -52,7 +52,7 @@ This is a lot of chitter chatter! In reality there are only three classes you ne
 - [DefaultModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/DefaultModuleFactory.cs) is an implementation of [IModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/IModuleFactory.cs).
     - It provides a standard way to get modules across your game and should be appropriate for 90% of use cases.
 
-Note that we use interfaces wherever possible as a matter of principle to maintain decoupling, this abstraction is enforced in DefaultModuleFactory, but it is not necessarily required in general.
+Note that we use interfaces wherever possible as a matter of principle to maintain decoupling, this abstraction is enforced in DefaultModuleFactory, but it is not necessarily required if you define your own module factory. Its often faster to develop without abstraction.
 
 ### Example
 You can use a  MonoBehaviour to bootstrap the module system. There are other ways to bootstrap the module system. You just need a way to create and update the module factory and modules. Using a GameManager/LevelManager's Awake/Start and Update functions suffice most of the time.

@@ -23,7 +23,7 @@
 
 ![It's going to be ok.](https://media.giphy.com/media/3ohs81rDuEz9ioJzAA/giphy-downsized.gif)
 
-Fear not - **we have the solution for you!**
+## Fear not - **we have the solution for you!**
 
 The module pattern is a framework for **building gameplay systems decoupled from the transform hierarchy.**
 The framework provides a very light set of tools to create acyclical, decoupled caller hierarchies in code, and **allows you to access them from MonoBehaviour-land.**

@@ -13,7 +13,7 @@
 **Have you experienced one or more of the following symptoms?**
 
 - _**Uncertainty**_ surrounding which components depend on one another.
-- _**Disbelief**_ staring at a mess of duplicated game objects after project handed over.
+- _**Disbelief**_ staring at a mess of duplicated game objects after project hand-over.
 - _**Dread**_ while searching for a component in the hierarchy editor window.
 - _**Trepidation**_ related to moving a component to a different game object.
 - _**Concern**_ over linking components together in the hierarchy and whether they will randomly become unlinked.

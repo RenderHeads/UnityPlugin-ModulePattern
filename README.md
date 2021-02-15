@@ -32,7 +32,7 @@ The framework provides a very light set of tools to create acyclical, decoupled 
 
 ## Features
 - Build your module hierarchy in code.
-- Access modules anywhere in code, globally and on a per scene basis, without overusing singletons.
+- Access modules anywhere, globally and on a per scene basis, without overusing singletons.
 - Create modules as plain C# classes which open up the possibility for new design patterns:
    - Adhere to [RAII](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization) principles.
    - Use [Inversion of Control](https://en.wikipedia.org/wiki/Inversion_of_control) and DI
@@ -44,15 +44,13 @@ The framework provides a very light set of tools to create acyclical, decoupled 
 - It is **not** replacement or in competition with MonoBehaviours, MonoBehaviours are still useful for view related logic.
 
 # Usage
-The pattern is based on two interfaces
+This is a lot of chitter chatter! In reality there are only three classes you need to know about:
 - [IModule](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/IModule.cs) 
     - Interface for any module you want to create (A C# class that extends IModule), IModuleFactory requires modules inherit from this.
 - [IModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/IModuleFactory.cs)
     - Interface responsible for storing modules. This is used to get Modules in your game, whether it be in MonoBehaviours, Systems, etc.
-
-[DefaultModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/DefaultModuleFactory.cs) is an implementation of [IModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/IModuleFactory.cs).
-
-- It provides a standard way to get modules across your game and should be appropriate for 90% of use cases.
+- [DefaultModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/DefaultModuleFactory.cs) is an implementation of [IModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Unity/Assets/RenderHeads/Lib/Runtime/Scripts/IModuleFactory.cs).
+    - It provides a standard way to get modules across your game and should be appropriate for 90% of use cases.
 
 Note that we use interfaces wherever possible as a matter of principle to maintain decoupling, this abstraction is enforced in DefaultModuleFactory, but it is not necessarily required in general.
 

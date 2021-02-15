@@ -8,7 +8,7 @@
 <p align ="center"> Author / Maintainer: Ross Borchers </p>
 
 
-# Lightweight module pattern for unity.
+# Module pattern for Unity
 
 **Have you experienced one or more of the following symptoms?**
 

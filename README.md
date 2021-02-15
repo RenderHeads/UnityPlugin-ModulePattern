@@ -97,7 +97,7 @@ List<IModuleFactory> factories = DefaultModuleFactory.GetAll();
 
 # Rationale
 
-Inter-class communication traditionally is achieved by a [singleton](https://en.wikipedia.org/wiki/Singleton_pattern), [FindObjectOfType](https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html) or [GetComponent](https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html), [GetComponentInChildren](https://docs.unity3d.com/ScriptReference/Component.GetComponentsInChildren.html), [GetComponentInParent](https://docs.unity3d.com/ScriptReference/GameObject.GetComponentInParent.html) and related functions. Sometimes you may assign a reference in a public inspector field.
+Inter-class communication traditionally is achieved by a [singleton](https://en.wikipedia.org/wiki/Singleton_pattern), [FindObjectOfType](https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html) or [GetComponent](https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html), [GetComponentInChildren](https://docs.unity3d.com/ScriptReference/Component.GetComponentsInChildren.html), [GetComponentInParent](https://docs.unity3d.com/ScriptReference/GameObject.GetComponentInParent.html) and related functions. Sometimes you may assign a reference in an inspector field.
 
 All of these assume some relationship between the transform hierarchy and the code structure. This is not always the case. Systems can contain logic but do not handle rendering and have no reason to be spacial (they are not view components!). The relationship does not need to be serialized in the scene or prefab. There may be little relationship between transform hierarchy order and the caller hierarchy. Its convoluted.
 

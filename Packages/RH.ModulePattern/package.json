@@ -1,6 +1,6 @@
 {
   "author": "RenderHeads, Ross Borchers",
-  "description": "Module Pattern for simple dependency management",
+  "description": "A simple The module pattern (in the classical sense) for building gameplay systems decoupled from the transform hierarchy (run in c# land and access from monobehaviour-land).",
   "displayName": "RH.ModulePattern",
   "keywords": [ "unity" ],
   "license": "See license in license.md (GPL 3)",

@@ -1,6 +1,5 @@
 ﻿//(C) RenderHeads PTY LTD 2021
 //Author: Ross Borchers
-
 namespace RenderHeads.Tooling.Core.ModulePattern
 {
 	/// <summary>

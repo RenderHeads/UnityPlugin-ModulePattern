@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿// (C) RenderHeads PTY LTD
+// Author: Shane Marks
 namespace RenderHeads.Tooling.Core.ModulePattern.Sample
 {
     public interface IMoverModule : IModule

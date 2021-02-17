@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// (C) RenderHeads PTY LTD
+// Author: Shane Marks;
 using System.Collections.Generic;
 using UnityEngine;
 

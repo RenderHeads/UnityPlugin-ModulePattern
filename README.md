@@ -3,7 +3,7 @@
   <img src="https://renderheads-file-share.s3.af-south-1.amazonaws.com/assets/renderheads.svg" width=50%>
 </p>
 <p align="center">
-  <b>RenderHeads© 2021</b>
+  <b>RenderHeads © 2021</b>
 </p>
 <p align ="center"> Author / Maintainer: Ross Borchers </p>
 

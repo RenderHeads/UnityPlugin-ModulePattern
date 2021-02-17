@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://renderheads-file-share.s3.af-south-1.amazonaws.com/assets/renderheads.svg">
+  <img src="https://renderheads-file-share.s3.af-south-1.amazonaws.com/assets/renderheads.svg" width=50%>
 </p>
 <p align="center">
   <b>RenderHeads© 2021</b>

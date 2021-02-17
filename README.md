@@ -1,9 +1,9 @@
 
 <p align="center">
-  <img src="https://renderheads.com/wp-content/themes/renderheads-theme/assets/media/logo.svg" width=50%>
+  <img src="https://renderheads.com/wp-content/themes/renderheads-theme/assets/media/logo.svg">
 </p>
 <p align="center">
-  <b>©RenderHeads 2021</b>
+  <b>© 2021</b>
 </p>
 <p align ="center"> Author / Maintainer: Ross Borchers </p>
 

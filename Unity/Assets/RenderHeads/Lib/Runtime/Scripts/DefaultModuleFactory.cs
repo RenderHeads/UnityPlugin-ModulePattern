@@ -10,8 +10,22 @@ namespace RenderHeads.Tooling.Core.ModulePattern
     /// </summary>
 	public class DefaultModuleFactory : IModuleFactory
     {
+        /// <summary>
+        /// gets set to the build index when you pass a Scene into the constructor
+        /// </summary>
         private int _sceneIndex = -1;
+        /// <summary>
+        /// Caches scene.path in the constructor
+        /// </summary>
         private string _scenePath = "";
+
+        /// <summary>
+        /// Keeps track of all constructred ModuleFactories
+        /// </summary>
+        private static List<IModuleFactory> _all = new List<IModuleFactory>();
+
+        private List<IModule> _modules = new List<IModule>();
+
 
         /// <summary>
         /// Should be constructed when the scene is first loaded, before modules are initialized. The expected use case is to initialize the factory only once.
@@ -21,23 +35,25 @@ namespace RenderHeads.Tooling.Core.ModulePattern
         {
             _sceneIndex = scene.buildIndex;
             _scenePath = scene.path;
-            all.Add(this);
+            _all.Add(this);
         }
 
-        /// <summary>
-        /// Get all module factories in all scenes.
-        /// </summary>
-		static List<IModuleFactory> all = new List<IModuleFactory>();
         public static IModuleFactory[] GetAll()
         {
-            return all.ToArray();
+            return _all.ToArray();
         }
 
-        ///[Dangerous] Finds all modules of type in ALL registered default module factories across ALL SCENES. Only use for 'singleton' modules
+
+
+        /// <summary>
+        /// [Dangerous] Finds all modules of type in ALL registered default module factories across ALL SCENES. Only use for 'singleton' modules
+        /// </summary>
+        /// <typeparam name="T">The module you want to search for</typeparam>
+        /// <returns>All modules matches the searched type, will return an empty list if there are no matches</returns>       
         public static List<T> FindInAll<T>() where T : IModule
         {
             List<T> found = new List<T>();
-            foreach (IModuleFactory fact in all)
+            foreach (IModuleFactory fact in _all)
             {
                 T mod;
                 if (fact.TryGetModule(out mod))
@@ -48,8 +64,13 @@ namespace RenderHeads.Tooling.Core.ModulePattern
             return found;
         }
 
-        ///[Dangerous] Finds a module of type in ALL registered default module factories across ALL SCENES. Only use for 'singleton' modules.
+        /// <summary>
+        /// Finds a module of type in ALL registered default module factories across ALL SCENES. Only use for 'singleton' modules.
         /// Consider using TryFindFactoryInScene(Scene scene, out IModuleFactory sceneFactory) instead.
+        /// </summary>
+        /// <typeparam name="T">The module you want to search for</typeparam>
+        /// <param name="first">The first matching module in all module factories</param>
+        /// <returns>true if it found something, otherwise false, in which case first will probably be null.</returns>
         public static bool TryFindFirstInAll<T>(out T first) where T : IModule
         {
             List<T> found = FindInAll<T>();
@@ -76,7 +97,7 @@ namespace RenderHeads.Tooling.Core.ModulePattern
             //if asset bundle scene check against scene path
             if (scene.buildIndex == -1)
             {
-                foreach (DefaultModuleFactory factory in all)
+                foreach (DefaultModuleFactory factory in _all)
                 {
                     if (factory._scenePath == scene.path)
                     {
@@ -87,7 +108,7 @@ namespace RenderHeads.Tooling.Core.ModulePattern
             }
             else //if scene included in build check against scene id
             {
-                foreach (DefaultModuleFactory factory in all)
+                foreach (DefaultModuleFactory factory in _all)
                 {
                     if (factory._sceneIndex == scene.buildIndex)
                     {
@@ -113,7 +134,7 @@ namespace RenderHeads.Tooling.Core.ModulePattern
 
             module = default(T);
             Type requestedInterfaceType = typeof(T);
-            foreach (IModule mod in modules)
+            foreach (IModule mod in _modules)
             {
                 Type modType = mod.GetType();
                 if (requestedInterfaceType.IsAssignableFrom(modType))
@@ -133,7 +154,7 @@ namespace RenderHeads.Tooling.Core.ModulePattern
 		/// <returns>The same module as the parameter <paramref name="module"/>.</returns>
 		public T AddModule<T>(T module) where T : IModule
         {
-            foreach (IModule mod in modules)
+            foreach (IModule mod in _modules)
             {
                 if (mod.GetType().Name == module.GetType().Name)
                 {
@@ -141,7 +162,7 @@ namespace RenderHeads.Tooling.Core.ModulePattern
                 }
             }
 
-            modules.Add(module);
+            _modules.Add(module);
             return module;
         }
 
@@ -178,9 +199,8 @@ namespace RenderHeads.Tooling.Core.ModulePattern
         /// <returns></returns>
 		public List<IModule> GetModules()
         {
-            return modules;
+            return _modules;
         }
 
-        private List<IModule> modules = new List<IModule>();
     }
 }

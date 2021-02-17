@@ -1,5 +1,6 @@
 ﻿// (C) RenderHeads PTY LTD
 // Author: Shane Marks
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,8 +31,7 @@ namespace RenderHeads.Tooling.Core.ModulePattern.Sample
         /// </summary>
         [SerializeField]
         private GameView _gameView = null;
-
-
+        
         /// <summary>
         /// We want to use AWAKE so our modules initialize before everything else.
         /// </summary>
@@ -46,7 +46,6 @@ namespace RenderHeads.Tooling.Core.ModulePattern.Sample
 
             //declare our mover module for moving objects around
             _moverModule = new MoverModule(_spawnerModule);
-
 
             //add our modules to the factory so they can be accessed outside this scope.
             _factory.AddModule(_spawnerModule);
@@ -84,7 +83,6 @@ namespace RenderHeads.Tooling.Core.ModulePattern.Sample
                     _moverModule.Start();
                 }
             };
-
         }
 
         /// <summary>

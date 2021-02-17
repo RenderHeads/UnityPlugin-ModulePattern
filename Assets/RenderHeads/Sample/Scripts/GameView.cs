@@ -1,5 +1,6 @@
 ﻿// (C) RenderHeads PTY LTD
 // Author: Shane Marks
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,18 +39,12 @@ namespace RenderHeads.Tooling.Core.ModulePattern.Sample
             _spawnButton.onClick.AddListener(() => { OnSpawnerClick.Invoke(); });
             _moverButton.onClick.AddListener(() => { OnMoverClick.Invoke(); });
         }
-
-       
-
-        // Update is called once per frame
+        
         void Update()
         {
             _countLabel.text = $"Total Spawned: {_spawnerModule.GetSpawnCount()}";
             _spawnButtonText.text = $"{(_spawnerModule.IsSpawning() ? "Stop" : "Start")} spawning";
             _moveButtonText.text = $"{(_moverModule.IsMoving() ? "Stop" : "Start")} moving";
-
-
-
         }
     }
 }

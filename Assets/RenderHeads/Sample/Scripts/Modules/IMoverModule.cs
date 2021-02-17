@@ -1,5 +1,6 @@
 ﻿// (C) RenderHeads PTY LTD
 // Author: Shane Marks
+
 namespace RenderHeads.Tooling.Core.ModulePattern.Sample
 {
     public interface IMoverModule : IModule
@@ -13,8 +14,7 @@ namespace RenderHeads.Tooling.Core.ModulePattern.Sample
         /// stop moving objects
         /// </summary>
         void Stop();
-
-
+        
         /// <summary>
         /// Returns if objects are moving (started = true)
         /// </summary>

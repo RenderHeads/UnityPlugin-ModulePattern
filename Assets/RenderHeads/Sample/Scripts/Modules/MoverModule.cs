@@ -50,8 +50,6 @@ namespace RenderHeads.Tooling.Core.ModulePattern.Sample
             {
                 go.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + Mathf.Sin(_delta)*0.1f, go.transform.position.z);
             }
-
-
         }
         public bool IsMoving()
         {

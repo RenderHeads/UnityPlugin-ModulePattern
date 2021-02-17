@@ -1,5 +1,6 @@
 ﻿//(C) RenderHeads PTY LTD 2021
 //Author: Ross Borchers
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,9 +47,7 @@ namespace RenderHeads.Tooling.Core.ModulePattern
 		{
 			return _all.ToArray();
 		}
-
-
-
+		
 		/// <summary>
 		/// [Dangerous] Finds all modules of type in ALL registered default module factories across ALL SCENES. Only use for 'singleton' modules
 		/// </summary>
@@ -204,6 +203,5 @@ namespace RenderHeads.Tooling.Core.ModulePattern
 		{
 			return _modules;
 		}
-
 	}
 }

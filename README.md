@@ -45,11 +45,11 @@ The framework provides a very light set of tools to create acyclical, decoupled 
 
 # Usage
 There are only three useful files in this repository:
-- [IModule](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/packages/Runtime/IModule.cs) 
+- [IModule](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/packages/RH.ModulePattern/Runtime/IModule.cs) 
     - Interface for any module you want to create (A C# class that extends IModule), IModuleFactory requires modules inherit from this.
-- [IModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/packages/Runtime/IModuleFactory.cs)
+- [IModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/packages/RH.ModulePattern/Runtime/IModuleFactory.cs)
     - Interface responsible for storing modules. This is used to get Modules in your game, whether it be in MonoBehaviours, Systems, etc.
-- [DefaultModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/packages/Runtime/DefaultModuleFactory.cs) is an implementation of [IModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/packages/Runtime/IModuleFactory.cs).
+- [DefaultModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/packages/RH.ModulePattern/Runtime/DefaultModuleFactory.cs) is an implementation of [IModuleFactory](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/RH.ModulePattern/packages/Runtime/IModuleFactory.cs).
     - It provides a standard way to get modules across your game and should be appropriate for 90% of use cases.
 
 Note that we use interfaces wherever possible as a matter of principle to maintain decoupling. This abstraction is enforced in DefaultModuleFactory, but it is not necessarily required if you define your own module factory. It's often faster to develop without abstraction.

@@ -38,7 +38,7 @@ namespace RenderHeads.Tooling.Core.ModulePattern.Sample
 
         void Awake()
         {
-            //Create a new defaultmodule factors and pass in the actice scene as a reference, so this particular module can be scoped to the scene
+            //Create a new default module factory and pass in the active scene as a reference, so this particular module can be scoped to the scene
             DefaultModuleFactory _factory = new DefaultModuleFactory(gameObject.scene);
 
             //declare our spawner module for spawning objects in the scene, and set spawn immediately = true

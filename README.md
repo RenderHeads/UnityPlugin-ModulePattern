@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://i1.wp.com/siliconcape.com/wp-content/uploads/2018/10/118-logo.png">
+  <img src="https://renderheads.com/wp-content/themes/renderheads-theme/assets/media/logo.svg" width=50%>
 </p>
 <p align="center">
   <b>©RenderHeads 2021</b>

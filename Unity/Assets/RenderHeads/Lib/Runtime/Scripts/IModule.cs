@@ -11,10 +11,10 @@ namespace RenderHeads.Tooling.Core.ModulePattern
     /// Pass in dependencies through the constructor IOC like.
     /// </summary>
 	public interface IModule
-	{
+    {
         /// <summary>
         /// Should be called at a regular interval. The order of module updates should be controlled by the caller to ensure all dependencies have already been updated.
         /// </summary>
 		void UpdateModule();
-	}
+    }
 }

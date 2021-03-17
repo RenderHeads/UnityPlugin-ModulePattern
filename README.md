@@ -10,6 +10,13 @@
 
 # Module pattern for Unity
 
+The module pattern is a framework for **building gameplay systems decoupled from the transform hierarchy.**
+The framework provides a very light set of tools to create acyclical, decoupled caller hierarchies in code, and **allows you to access them from MonoBehaviour-land.**
+
+[A module in a classical sense!](https://en.wikipedia.org/wiki/Modular_programming) A decoupled, cohesive and replaceable piece of functionality, hidden behind an interface. Most of the time, modules are plain C# classes, but they could be anything you like. 
+
+We also provide a factory implementation to access modules program or scene wide, so they can improve on the singleton pattern and provide access at different levels of scope.
+
 **Have you experienced one or more of the following symptoms?**
 
 - _**Uncertainty**_ surrounding which components depend on one another?
@@ -21,14 +28,8 @@
 - _**Unease**_ building the transform hierarchy for systems that have no reason to be represented spatially?
 - _**Confusion**_ when disabled GameObjects erroneously disable an important component?
 
-![It's going to be ok.](https://media.giphy.com/media/3ohs81rDuEz9ioJzAA/giphy-downsized.gif)
+## The module pattern was built to help avoid these issues
 
-## Fear not - **we have the solution for you!**
-
-The module pattern is a framework for **building gameplay systems decoupled from the transform hierarchy.**
-The framework provides a very light set of tools to create acyclical, decoupled caller hierarchies in code, and **allows you to access them from MonoBehaviour-land.**
-
-[We mean module in a classical sense!](https://en.wikipedia.org/wiki/Modular_programming) A decoupled, cohesive and replaceable piece of functionality, hidden behind an interface. In this case, modules are plain C# classes that inherit from an interface and have factories to access them program-wide. But you could put anything behind that interface.
 
 ## Features
 - Build your module hierarchy in code.

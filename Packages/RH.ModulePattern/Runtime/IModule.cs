@@ -15,6 +15,6 @@ namespace RenderHeads.Tooling.Core.ModulePattern
      /// Should be called at a regular interval. The order of module updates should be controlled by the caller to ensure all dependencies have already been updated.
      /// </summary>
      /// <param name="delta">Pass in a deltaTime calculated in parent update, if you want to pass that into underlying update event, so thay you don't need to query it within the method</param>
-        void UpdateModule(float? delta = null);
+        void UpdateModule(float? deltaTime = null);
     }
 }

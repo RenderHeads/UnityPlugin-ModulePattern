@@ -37,7 +37,7 @@ namespace RenderHeads.Tooling.Core.ModulePattern.Sample
         {
             _canMove = false;
         }
-        public void UpdateModule(float? delta)
+        public void UpdateModule(float? deltaTime)
         {
             if (!_canMove)
             {

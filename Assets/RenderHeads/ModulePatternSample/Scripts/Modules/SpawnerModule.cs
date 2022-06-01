@@ -75,7 +75,7 @@ namespace RenderHeads.Tooling.Core.ModulePattern.Sample
             _canSpawn = false;
         }
 
-        public void UpdateModule()
+        public void UpdateModule(float? deltaTime)
         {
             if (!_canSpawn)
             {

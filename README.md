@@ -44,6 +44,9 @@ We also provide a factory implementation to access modules program or scene wide
 - It is **not** a replacement or in competition with DOTS, Jobs, or Burst. You can use them together.
 - It is **not** a replacement or in competition with MonoBehaviours, MonoBehaviours are still useful for view related logic.
 
+# Installation
+Using Unity's Package Manager (UPM), select Add New Package from Git URL, and paste the following URL: https://github.com/RenderHeads/UnityPlugin-ModulePattern/tree/master/Packages/RH.ModulePattern
+
 # Usage
 There are only three useful files in this repository:
 - [IModule](https://github.com/RenderHeads/UnityPlugin-ModulePattern/blob/master/Packages/RH.ModulePattern/Runtime/IModule.cs) 

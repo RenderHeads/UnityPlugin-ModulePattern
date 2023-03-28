@@ -55,6 +55,10 @@ There are only three useful files in this repository:
 
 Note that we use interfaces wherever possible as a matter of principle to maintain decoupling. This abstraction is enforced in DefaultModuleFactory, but it is not necessarily required if you define your own module factory. It's often faster to develop without abstraction.
 
+### Installation
+
+Using Unity's Package Manager (UPM), select Add New Package from Git URL, and paste the following link: https://github.com/RenderHeads/UnityPlugin-ModulePattern/tree/master/Packages/RH.ModulePattern
+
 ### Example
 You can use a MonoBehaviour to bootstrap the module system, but there are other ways to bootstrap the module system. You just need a way to create and update the module factory and modules. Using a GameManager/LevelManager's Awake/Start and Update functions suffice most of the time.
  
